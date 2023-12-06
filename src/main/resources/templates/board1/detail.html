@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>WEAVUS 게시글 - 상세정보</title>
+</head>
+<body>
+<table border="1">
+  <tr>
+    <th>글번호</th><th>타이틀</th><th>내용</th><th>글쓴이</th><th>상태</th>
+  </tr>
+  <tr>
+    <td th:text="${board1.no}"></td>
+    <td th:text="${board1.title}"></td>
+    <td th:text="${board1.content}"></td>
+    <td th:text="${board1.writer}"></td>
+    <td th:text="${board1.status}"></td>
+  </tr>
+</table>
+<a th:href="@{'/board1/modify/' + ${board1.no}}"><button>수정</button></a>
+<form th:action="@{'/board1/modify/' + ${board1.no}}" method="post">
+  <input type="hidden" name="_method" value="delete"/>
+  <button type="submit">삭제</button>
+</body>
+</html>

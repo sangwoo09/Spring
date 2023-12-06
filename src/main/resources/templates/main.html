@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>WEAVUS 게시판</title>
+</head>
+<body>
+
+<span>로그인 유저 : </span><span th:text = "${session.sessionUserName}"></span>
+
+<table border="1">
+    <tr>
+        <th>글번호</th><th>타이틀</th><th>글쓴이</th>
+    </tr>
+    <tr th:each = "board1 : ${board1List}">
+        <td th:text = "${board1.no}"></td>
+        <td><a th:href="@{'/board1/detail/' + ${board1.no}}" th:text = "${board1.title}"></a></td>
+        <td th:text = "${board1.writer}"></td>
+    </tr>
+</table>
+<a href="/board1/reg">글쓰기</a>
+</body>
+</html>
