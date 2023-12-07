@@ -72,7 +72,7 @@ public class Board1Controller {
 
         }
     }
-    @PutMapping("/modify/{no}")
+    @PostMapping ("/modify/{no}")
     private String modify(@PathVariable Integer no, Board1Dto board1Dto, HttpServletRequest request) {
         Board1 board1 = new Board1();
         board1.setNo(no);
@@ -82,9 +82,9 @@ public class Board1Controller {
         board1.setWriter(session.getAttribute("sessionUserName").toString());
 
         board1Repo.save(board1);
-        return "redirect:/board1/detail"+no;
+        return "redirect:/board1/detail/"+no;
     }
-    @DeleteMapping("/delete/{no}")
+    @GetMapping("/delete/{no}")
     public String delete(@PathVariable("no") Integer no){
         board1Repo.deleteById(no);
         return "redirect:/board1/list";
